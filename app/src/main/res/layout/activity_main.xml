@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <data>
+        <variable
+            name="view"
+            type="com.hj.myapplication.MainActivity" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="top"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:text="@string/title"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/greenMoss"
+            android:layout_margin="4dp"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:drawableStart=""
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/greyDeep"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pw"
+            android:hint="@string/PW"
+            android:textSize="14sp"
+            android:textColor="@color/greyDeep"
+            android:inputType="textPassword"
+            android:layout_margin="4dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkpw"
+            android:hint="@string/checkPW"
+            android:textSize="14sp"
+            android:textColor="@color/greyDeep"
+            android:inputType="textPassword"
+            android:layout_margin="4dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:hint="@string/name"
+            android:textSize="14sp"
+            android:textColor="@color/greyDeep"
+            android:inputType="text"
+            android:layout_margin="4dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneno"
+            android:hint="@string/phoneNo"
+            android:textSize="14sp"
+            android:textColor="@color/greyDeep"
+            android:inputType="phone"
+            android:layout_margin="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bday"
+            android:text="@string/BDay"
+            android:textSize="14sp"
+            android:textColor="@color/greenMoss"
+            android:layout_margin="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/bdaydp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_weight="2"
+                android:gravity=""
+                android:text="@string/BDayDP"
+                android:textColor="@color/greyDeep"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/choose"
+                android:onClick="@{(v) -> view.onClick(v)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/greenMoss"
+                android:text="@string/choose"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/membertype"
+            android:text="@string/memberType"
+            android:textSize="14sp"
+            android:textColor="@color/greenMoss"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/stdtmember"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/student"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/profmember"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/prof" />
+
+            <RadioButton
+                android:id="@+id/emplmember"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/employee" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/EULAAgree"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:text="@string/contractAgrmt" />
+
+            <Button
+                android:id="@+id/readEULA"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/read"
+                android:backgroundTint="@color/greyDeep"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/informaticsAgree"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:text="@string/infoAgrmt" />
+
+            <Button
+                android:id="@+id/readInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/read"
+                android:backgroundTint="@color/greyDeep"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:onClick="@{(v) -> view.onClick(v)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/greenMoss"
+            android:layout_marginTop="18dp"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:indeterminate="true"/>
+    </LinearLayout>
+</layout>
