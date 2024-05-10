@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:drawableStart=""
+            android:drawableStart="@drawable/ic_mail"
+            android:drawablePadding="5dp"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textColor="@color/greyDeep"
@@ -40,6 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/pw"
+            android:drawableStart="@drawable/ic_password"
+            android:drawablePadding="5dp"
             android:hint="@string/PW"
             android:textSize="14sp"
             android:textColor="@color/greyDeep"
@@ -50,6 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/checkpw"
+            android:drawableStart="@drawable/ic_password"
+            android:drawablePadding="5dp"
             android:hint="@string/checkPW"
             android:textSize="14sp"
             android:textColor="@color/greyDeep"
@@ -60,6 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/name"
+            android:drawableStart="@drawable/ic_user"
+            android:drawablePadding="5dp"
             android:hint="@string/name"
             android:textSize="14sp"
             android:textColor="@color/greyDeep"
@@ -70,6 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/phoneno"
+            android:drawableStart="@drawable/ic_phoneline"
+            android:drawablePadding="5dp"
             android:hint="@string/phoneNo"
             android:textSize="14sp"
             android:textColor="@color/greyDeep"
@@ -107,9 +116,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:backgroundTint="@color/greenMoss"
+                android:backgroundTint="@color/Transparent"
                 android:text="@string/choose"
-                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textColor="@color/greenMoss"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -168,8 +178,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/read"
-                android:backgroundTint="@color/greyDeep"
-                android:textColor="@color/white"
+                android:backgroundTint="@color/Transparent"
+                android:textStyle="bold"
+                android:textColor="@color/greenMoss"
                 android:textSize="12sp"/>
         </LinearLayout>
 
@@ -191,8 +202,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/read"
-                android:backgroundTint="@color/greyDeep"
-                android:textColor="@color/white"
+                android:backgroundTint="@color/Transparent"
+                android:textStyle="bold"
+                android:textColor="@color/greenMoss"
                 android:textSize="12sp" />
 
         </LinearLayout>

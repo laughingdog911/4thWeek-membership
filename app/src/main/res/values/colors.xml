@@ -6,4 +6,5 @@
     <color name="greyLight">#BBC4BB</color>
     <color name="greenNeon">#79F77F</color>
     <color name="greenMoss">#55765B</color>
+    <color name="Transparent">#00000000</color>
 </resources>
