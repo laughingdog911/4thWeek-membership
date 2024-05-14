@@ -141,6 +141,7 @@
                 android:id="@+id/stdtmember"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:buttonTint="@color/greenMoss"
                 android:layout_weight="1"
                 android:text="@string/student"
                 android:checked="true"/>
@@ -149,6 +150,7 @@
                 android:id="@+id/profmember"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:buttonTint="@color/greenMoss"
                 android:layout_weight="1"
                 android:text="@string/prof" />
 
@@ -156,6 +158,7 @@
                 android:id="@+id/emplmember"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:buttonTint="@color/greenMoss"
                 android:layout_weight="1"
                 android:text="@string/employee" />
         </RadioGroup>

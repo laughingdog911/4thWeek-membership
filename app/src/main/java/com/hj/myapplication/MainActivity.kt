@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun onClick(v: View) {
-        var birthday = binding.bdaydp.text
+        lateinit var birthday: String
         val phoneNumber = binding.phoneno.text
         val memberType = binding.membertype.text
         val email = binding.email.text
@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
         val at: Char = '@'
         var tag = email[0]
         val l: Int = email.length
-
-
 
         val EULAAgreed = binding.EULAAgree.isChecked
         val InfoAgreed = binding.informaticsAgree.isChecked
@@ -52,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 val eventHandler = DialogInterface.OnClickListener { p0, p1 ->
                     if (p1 == DialogInterface.BUTTON_NEGATIVE)
                         null else if (p1 == DialogInterface.BUTTON_POSITIVE) {
-                        null
+                            birthday = binding.bdaydp.text.toString()
                     }
                 }
             }
