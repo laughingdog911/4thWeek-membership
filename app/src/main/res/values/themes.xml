@@ -3,6 +3,5 @@
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
     </style>
-    <item name="colorPrimary">@color/greenMoss</item>
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
 </resources>
