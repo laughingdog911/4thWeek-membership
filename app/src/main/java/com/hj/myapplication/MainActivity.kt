@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.DatePicker
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +15,15 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 
 import com.hj.myapplication.databinding.ActivityMainBinding
+import java.util.Calendar
+import java.util.Date
 
 private fun AlertDialog.Builder.setItems(arrayOf: MutableList<String>) {
 }
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,45 +33,31 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private val confirmDialog: AlertDialog = AlertDialog.Builder(this)
-        .setTitle("회원가입")
-        .setMessage("다음 정보로 가입을 진행하시겠습니까?")
-        .setIcon(android.R.drawable.ic_dialog_info)
-        .setPositiveButton("예") { dialogInterface, which ->
-            dialogInterface.dismiss()
-            show(binding.progressBar)
-        }
-        .setNegativeButton("아니오") { dialogInterface, which ->
-            dialogInterface.dismiss()
-        }
-        .create()
-
-
     fun onClick(v: View) {
-        lateinit var birthday: String
         val phoneNumber = binding.phoneno.text.toString()
         val email = binding.email.text.toString()
         val name = binding.name.text.toString()
+        val birthday = binding.bdaydp.text.toString()
         val getPW = binding.pw.text.toString()
         val getCheckPW = binding.checkpw.text.toString()
         val infoList: MutableList<String> =
-            mutableListOf(email, name, birthday, phoneNumber, getPW, getCheckPW)
+            mutableListOf(email, name, phoneNumber, getPW, getCheckPW)
         val eulaAgreed = binding.EULAAgree.isChecked
         val infoAgreed = binding.informaticsAgree.isChecked
 
+        val selectedDate = DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            binding.bdaydp.text = "${year}. ${month + 1}. ${day}"
+        }
+        val calendar = Calendar.getInstance()
         when (v) {
             binding.choose -> {
-                val datePicker =
-                    DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth -> //why set as a val...?
-                        birthday = "${year}, ${month + 1}, ${dayOfMonth}"
-                    }
-                val eventHandler = DialogInterface.OnClickListener { p0, p1 ->
-                    if (p1 == DialogInterface.BUTTON_NEGATIVE)
-                        null else if (p1 == DialogInterface.BUTTON_POSITIVE) {
-                        birthday = binding.bdaydp.text.toString()
-                    }
-                }
+
+                DatePickerDialog(
+                    this, selectedDate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)
+                ).show()
             }
+
 
             binding.confirmButton -> {
 
@@ -76,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                         infoList[i] = null.toString()
                     }
                 }
-                if (infoList.any { false }) {                                  //1. 공백필드
+                if (infoList.any { false }) {                            //1. 공백필드 !!!!!!!!
                     AlertDialog.Builder(this).run {
                         setIcon(android.R.drawable.ic_dialog_alert)
                         setTitle("공백 필드")
@@ -108,15 +98,33 @@ class MainActivity : AppCompatActivity() {
                         setPositiveButton("확인", null)
                         show()
                     }
-                } else if (!eulaAgreed && !infoAgreed) {                       //5. 계약서 미동의
+                } else if (!(eulaAgreed && infoAgreed)) {                       //5. 계약서 미동의
                     AlertDialog.Builder(this).run {
                         setIcon(android.R.drawable.ic_dialog_alert)
                         setTitle("동의 필요")
                         setMessage("최종 사용권 계약과 개인정보 수집 및 처리 방침을 읽고 동의해주세요.")
                         setPositiveButton("확인", null)
+                        show()
                     }
                 } else {                                                       //6. 마지막 회원가입 확인
-                    confirmDialog.show()
+                    AlertDialog.Builder(this).run {
+                        setTitle("회원가입")
+                        setMessage("다음 정보로 가입을 진행하시겠습니까?\n" +
+                                "${name}\n" +
+                                "${email}\n" +
+                                "${birthday}\n" +                           //회원 유형도 넣기!!!!!!
+                                "${phoneNumber}")
+                        setIcon(android.R.drawable.ic_dialog_info)
+                        setPositiveButton("예") { dialogInterface, which ->
+                            dialogInterface.dismiss()
+                            binding.confirmButton.visibility = View.INVISIBLE
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+                        setNegativeButton("아니오") { dialogInterface, which ->
+                            dialogInterface.dismiss()
+                        }
+                        show()
+                    }
                 }
             }
         }
