@@ -29,7 +29,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    private val confirmDialog: AlertDialog = AlertDialog.Builder(this)
+        .setTitle("회원가입")
+        .setMessage("다음 정보로 가입을 진행하시겠습니까?")
+        .setIcon(android.R.drawable.ic_dialog_info)
+        .setPositiveButton("예") { dialogInterface, which ->
+            dialogInterface.dismiss()
+            show(binding.progressBar)
+        }
+        .setNegativeButton("아니오") { dialogInterface, which ->
+            dialogInterface.dismiss()
+        }
+        .create()
 
 
     fun onClick(v: View) {
@@ -66,13 +77,13 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 if (infoList.any { false }) {                                  //1. 공백필드
-                    AlertDialog.Builder(this).run{
+                    AlertDialog.Builder(this).run {
                         setIcon(android.R.drawable.ic_dialog_alert)
                         setTitle("공백 필드")
                         setMessage("모든 필드를 채워주세요.")
                         setPositiveButton("확인", null)
                         show()
-                }
+                    }
                 } else if (!email.contains("@")) {                        //2. 잘못된 이메일 형식
                     AlertDialog.Builder(this).run {
                         setIcon(android.R.drawable.ic_dialog_alert)
@@ -105,19 +116,13 @@ class MainActivity : AppCompatActivity() {
                         setPositiveButton("확인", null)
                     }
                 } else {                                                       //6. 마지막 회원가입 확인
-                    AlertDialog.Builder(this).run {
-                        setIcon(android.R.drawable.ic_dialog_info)
-                        setTitle("회원가입")
-                        setMessage("다음 정보로 가입을 진행하시겠습니까?\n")
-                        setItems(infoList)
-                        setPositiveButton("예", null)  //setProgressBarVisibility()
-                        setNegativeButton("아니오", null)
-                    }
+                    confirmDialog.show()
                 }
             }
         }
     }
 }
+
 
 
 
