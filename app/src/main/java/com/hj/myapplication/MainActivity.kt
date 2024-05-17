@@ -18,11 +18,21 @@ import com.hj.myapplication.databinding.ActivityMainBinding
 import java.util.Calendar
 import java.util.Date
 
-private fun AlertDialog.Builder.setItems(arrayOf: MutableList<String>) {
+enum class MemberType(val member : String)
+{
+    STUDENT("학생"),
+    PROF("교수"),
+    EMPLOYEE("교직원")
+
+    var selectedType:String? = null
+    fun getString() : String {
+        return "$selectedType"
+    }
 }
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             binding.bdaydp.text = "${year}. ${month + 1}. ${day}"
         }
         val calendar = Calendar.getInstance()
+
         when (v) {
             binding.choose -> {
 
@@ -58,6 +69,15 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
 
+            binding.stdtmember -> {
+                selectedType = MemberType.STUDENT.getString()
+                }
+            binding.profmember -> {
+                selectedType = MemberType.PROF.getString()
+            }
+            binding.emplmember -> {
+                selectedType = MemberType.EMPLOYEE.getString()
+            }
 
             binding.confirmButton -> {
                 val empty = "empty"
@@ -110,10 +130,11 @@ class MainActivity : AppCompatActivity() {
                     AlertDialog.Builder(this).run {
                         setTitle("회원가입")
                         setMessage("다음 정보로 가입을 진행하시겠습니까?\n" +
-                                "${name}\n" +
-                                "${email}\n" +
-                                "${birthday}\n" +                           //회원 유형도 넣기!!!!!!
-                                "${phoneNumber}")
+                                "이름: ${name}\n" +
+                                "이메일: ${email}\n" +
+                                "생년월일: ${birthday}\n" +                           //회원 유형도 넣기!!!!!!
+                                "전화 번호: ${phoneNumber}\n" +
+                                "멤버 유형: ${selectedType.member}")
                         setIcon(android.R.drawable.ic_dialog_info)
                         setPositiveButton("예") { dialogInterface, which ->
                             dialogInterface.dismiss()

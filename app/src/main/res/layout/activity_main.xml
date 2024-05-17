@@ -139,6 +139,7 @@
 
             <RadioButton
                 android:id="@+id/stdtmember"
+                android:onClick="@{(v) -> view.onClick(v)}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:buttonTint="@color/greenMoss"
@@ -148,6 +149,7 @@
 
             <RadioButton
                 android:id="@+id/profmember"
+                android:onClick="@{(v) -> view.onClick(v)}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:buttonTint="@color/greenMoss"
@@ -156,6 +158,7 @@
 
             <RadioButton
                 android:id="@+id/emplmember"
+                android:onClick="@{(v) -> view.onClick(v)}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:buttonTint="@color/greenMoss"
