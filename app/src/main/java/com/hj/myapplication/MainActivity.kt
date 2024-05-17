@@ -60,13 +60,13 @@ class MainActivity : AppCompatActivity() {
 
 
             binding.confirmButton -> {
-
+                val empty = "empty"
                 for (i in infoList.indices) {
                     if (infoList[i].isEmpty()) {
-                        infoList[i] = null.toString()
+                        infoList[i] = empty
                     }
                 }
-                if (infoList.any { false }) {                            //1. 공백필드 !!!!!!!!
+                if (infoList.any { it == empty }) {                            //1. 공백필드 !!!!!!!!
                     AlertDialog.Builder(this).run {
                         setIcon(android.R.drawable.ic_dialog_alert)
                         setTitle("공백 필드")
