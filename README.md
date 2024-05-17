@@ -1,6 +1,8 @@
-### My third weekly project!
+### My third weekly project(week4)!
 
 It took me two weeks to complete this one...! But I'm getting there. I can manage to navigate and find my errors slowly.
+It says 4th week but this is my third project in all... well I'll come up with a better naming system so that it's clearer. 
+And naming isn't really important here!
 
 I was to make this UI:
 
